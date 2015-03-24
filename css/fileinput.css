@@ -13,6 +13,10 @@
     overflow-x: auto;
 }
 
+.input-group {
+    display: none;
+}
+
 .file-loading {
     top: 0;
     right: 0;
@@ -24,7 +28,6 @@
     background: transparent url('../img/loading.gif') top left no-repeat;
     border: none;
 }
-
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -51,13 +54,39 @@
     float: left;
     margin-top: 2px;
 }
-
-.file-caption-name {
+.file-thumbnail-header{
+    display: inline-block;
+}
+.file-thumb-caption{
+    margin-left: 20px;
+    float: left;
+}
+.fileinput-remove, .fileuploaded-remove{
+    float: right;
+    width:21px;
+    background: #929292;
+    color: #f6f6f6;
+    text-align: center;
+    margin-right: 20px;
+}
+.fileuploaded-remove{
+    position: absolute;
+    bottom:0;
+    right: 0;
+    margin-right: 0;
+}
+.file-caption-name, .file-size {
     display: inline-block;
     overflow: hidden;
     max-height: 20px;
     padding-right: 10px;
     word-break: break-all;
+}
+.file-caption-name{
+    font-weight: bold;
+}
+.file-size{
+    color:#929292;
 }
 
 .file-caption-ellipsis {
@@ -83,7 +112,6 @@
     padding: 10px;
     right: 0px;
 }
-
 .file-error-message {
     background-color: #f2dede;
     color: #a94442;
@@ -91,12 +119,6 @@
     border-radius: 5px;
     padding: 5px;
 }
-
-.file-error-message pre, .file-error-message ul {
-    margin: 5px 0;
-    text-align: left;
-}
-
 .file-caption-disabled {
     background-color: #EEEEEE;
     cursor: not-allowed;
@@ -115,24 +137,32 @@
     margin-bottom: 5px;
 }
 
+.file-preview:hover, .file-preview.highlighted{
+    background:#F7F7F7;
+}
+
 .file-preview-frame {
     display: table;
-    margin: 8px;
-    height: 160px;
-    border: 1px solid #ddd;
-    box-shadow: 1px 1px 5px 0px #a2958a;
-    padding: 6px;
+    /*height: 160px;*/
+    /*border: 1px solid #ddd;
+    box-shadow: 1px 1px 5px 0px #a2958a;*/
+    border-bottom:1px solid #999;
+    width:100%;
+    margin: 0;
+    padding: 0;
     float: left;
     text-align: center;
     vertical-align: middle;
+    position: relative;
 }
 
 .file-preview-frame:hover {
-    box-shadow: 3px 3px 5px 0px #333;
+    /*box-shadow: 3px 3px 5px 0px #333;*/
 }
 
 .file-preview-image {
-    height: 160px;
+    width: 100%;
+    height: auto;
     vertical-align: text-center;
 }
 
@@ -151,16 +181,18 @@
 .file-preview-other i {
     font-size: 2.4em;
 }
-
-.file-other-error {
+.file-other-error { 
     width: 100%;
     padding-top: 30px;
-    text-align: right
+    text-align:right
+}
+.file-input-ajax-new .fileinput-remove{
+    display: none;
 }
 
-.file-input-new .file-preview, .file-input-new .close, .file-input-new .glyphicon-file,
+.file-input-new .file-preview, .file-input-new .close, .file-input-new .glyphicon-file, 
 .file-input-new .fileinput-remove-button, .file-input-new .fileinput-upload-button,
-.file-input-ajax-new .fileinput-remove-button, .file-input-ajax-new .fileinput-upload-button {
+.file-input-ajax-new .fileinput-remove-button, .file-input-ajax-new .fileinput-upload-button  {
     display: none;
 }
 
@@ -183,7 +215,7 @@
 }
 
 .file-thumbnail-footer .file-caption-name {
-    padding-top: 4px;
+    padding-top:4px;
     font-size: 11px;
     color: #777;
 }
@@ -198,25 +230,35 @@
     font-weight: bold;
     padding-top: 0;
 }
-
-.file-drop-zone {
-    border: 1px dashed #aaa;
+.file-input-ajax-new .file-drop-zone{
+    border:2px dashed #999;
     border-radius: 4px;
+}
+.file-drop-zone {
+    /*border:1px dashed #aaa;*/
+    border:1px solid #999;
     height: 100%;
-    text-align: center;
-    vertical-align: middle;
-    margin: 12px 15px 12px 12px;
-    padding: 5px;
+    text-align:center;
+    vertical-align:middle;
+    margin:0 20px 12px 20px;
+    padding: 0;
+}
+
+.dropzone-header-title{
+    margin:12px 0 5px 20px;
+    font-weight: bold;
+    color: #929292;
 }
 
 .file-drop-zone-title {
-    color: #aaa;
+	color: #aaa;
     font-size: 40px;
     padding: 85px 10px;
+    pointer-events:none;
 }
 
 .highlighted {
-    border: 2px dashed #999 !important;
+    /*border:2px dashed #999!important;*/
     background-color: #f0f0f0;
 }
 
@@ -224,9 +266,19 @@
     background-image: url('../img/loading-sm.gif');
     background-position: center bottom 10px;
     background-repeat: no-repeat;
-    opacity: 0.6;
+    opacity: 1;
 }
 
 .file-icon-large {
     font-size: 1.2em;
+}
+
+.progress{
+    margin:2px;
+    border-radius: 0;
+}
+
+.progress-bar-striped, .progress-striped .progress-bar{
+    background-image: none;
+    text-indent: -999px;
 }
